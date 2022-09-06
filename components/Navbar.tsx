@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
   const items = [
+    { title: 'Blog', link: '/blogs' },
     { title: 'Home', link: '/' },
     { title: 'About', link: '/' },
     { title: 'service', link: '/' },
@@ -20,13 +21,13 @@ const Navbar = () => {
             <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
               {items.map((item, i) => (
                 <li key={i}>
-                  <a
+                  <Link
                     href={item.link}
                     className="block py-2 pr-4 pl-3 rounded md:bg-transparent md:p-0"
                     aria-current="page"
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
