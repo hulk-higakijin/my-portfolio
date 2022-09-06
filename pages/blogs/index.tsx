@@ -1,15 +1,16 @@
 import { useState } from 'react'
+import prisma from '../../lib/prisma'
 import { Blog, Blogs } from '../../types/Blog'
 
 export async function getServerSideProps() {
-  try {
-    const blogs = await fetch('http://localhost:3000/api/blogs').then((data) =>
-      data.json()
-    )
-    return { props: { blogs } }
-  } catch (e) {
-    return { props: { blogs: [] } }
-  }
+  const blogs = await prisma.blog.findMany({
+    include: {
+      author: {
+        select: { name: true }
+      }
+    }
+  })
+  return { props: { blogs } }
 }
 
 const Blogs = (props: { blogs: Blogs }) => {
