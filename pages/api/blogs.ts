@@ -6,7 +6,7 @@ export default function handler(
   res: NextApiResponse<Blog[]>
 ) {
   res.status(200).json([
-    { title: 'hello, my world.', body: 'this is a beautiful world.' },
-    { title: 'hogehoge', body: 'higakijin' },
+    { title: 'hello, my world.', body: 'this is a beautiful world.', createdAt: 'today' },
+    { title: 'hogehoge', body: 'higakijin', createdAt: 'today' },
   ])
 }
